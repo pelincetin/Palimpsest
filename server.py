@@ -8,31 +8,31 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 pictures = [{
         "Id": 1,
-        "Picture": "https://wmho.org/wp-content/uploads/2017/04/IMG_0464.jpg",
+        "Poster": "http://www.livingstonmanor.net/HoosBuilding/TN_LMtoday-HoodBuilding.JPG",
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu dapibus risus. Sed imperdiet nibh nunc. Quisque non tempus nisi. Donec sed massa pretium, finibus purus ac, rhoncus est. Donec et libero urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas massa nisl, vulputate non dui eu, hendrerit pharetra elit.",
         "Location": "Stony Brook"
     },
     {
         "Id": 2,
-        "Poster": "https://communityimpact.com/uploads/images/2020/04/09/50369.JPG",
+        "Poster": "http://www.livingstonmanor.net/LM-FloodOf2010/LM-Flood2010-Sunoco.jpg",
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu dapibus risus. Sed imperdiet nibh nunc. Quisque non tempus nisi. Donec sed massa pretium, finibus purus ac, rhoncus est. Donec et libero urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas massa nisl, vulputate non dui eu, hendrerit pharetra elit.",
         "Location": "Stony Brook"
     },
     {
         "Id": 3,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BY2QzYTQyYzItMzAwYi00YjZlLThjNTUtNzMyMDdkYzJiNWM4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+        "Poster": "http://www.livingstonmanor.net/RussellHouse/LM-RussellHouse2009.JPG",
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu dapibus risus. Sed imperdiet nibh nunc. Quisque non tempus nisi. Donec sed massa pretium, finibus purus ac, rhoncus est. Donec et libero urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas massa nisl, vulputate non dui eu, hendrerit pharetra elit.",
         "Location": "Stony Brook"
     },
     {
         "Id": 4,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BY2QzYTQyYzItMzAwYi00YjZlLThjNTUtNzMyMDdkYzJiNWM4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+        "Poster": "http://livingstonmanor.net/FredPIX2/IMG_0789%20-%20Copy.JPG",
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu dapibus risus. Sed imperdiet nibh nunc. Quisque non tempus nisi. Donec sed massa pretium, finibus purus ac, rhoncus est. Donec et libero urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas massa nisl, vulputate non dui eu, hendrerit pharetra elit.",
         "Location": "Stony Brook"
     },
     {
         "Id": 5,
-        "Poster": "https://m.media-amazon.com/images/M/MV5BY2QzYTQyYzItMzAwYi00YjZlLThjNTUtNzMyMDdkYzJiNWM4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+        "Poster": "https://images.squarespace-cdn.com/content/v1/534d8565e4b0c7f5e4fcb4f7/1562030061043-ICZGG34BMCXHR40HHXGX/ke17ZwdGBToddI8pDm48kFyD7pzB8zoMIVY5aiUuFlp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8DMb5PTLoEDdB05UqhYu-xbnSznFxIRsaAU-3g5IaylIg/foster-supply-hospitality-ARNOLD-2019-06-Conservatory-Food-Scott-Yoga-Exteriors-Lawrence-Braun-0001-LB2_2700.jpg",
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu dapibus risus. Sed imperdiet nibh nunc. Quisque non tempus nisi. Donec sed massa pretium, finibus purus ac, rhoncus est. Donec et libero urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas massa nisl, vulputate non dui eu, hendrerit pharetra elit.",
         "Location": "Stony Brook"
     },

@@ -59,11 +59,10 @@
 				{% for movie in pictures %}
 					<div class="card">
 						<div class="card-body">
-						    <h5 class="card-title">{{movie.Title}}</h5>
-						    <img src={{movie.Poster}} class="card-img-top">
-						    <p class="card-text">
-						    	{{movie.Description}}
-							</p>
+							<h5 class="card-title">{{movie.Title}}</h5>
+							<img class="card-img-top" src={{movie.Poster}} alt="Card Image">
+							<p class="card-text">Location: {{movie.Location}}</p>
+								{{movie.Description}}
 						     <!--<a href="http://127.0.0.1:5000/view/{{movie.Id}}" class="btn btn-primary">Learn more!</a>-->
 						</div>
 					</div>
