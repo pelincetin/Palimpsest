@@ -42,13 +42,16 @@ pictures = [{
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 @app.route('/')
 def main():
 	return render_template('main.html', pictures=pictures)
 
+
 @app.route('/upload')
 def upload_form():
 	return render_template('upload.html')
+
 
 @app.route('/uploaded', methods=['GET', 'POST'])
 def upload_image():
@@ -83,10 +86,21 @@ def upload_image():
 		flash('Allowed image types are -> png, jpg, jpeg, gif')
 		return redirect(request.url)
 
-@app.route('/display/<filename>')
-def display_image(filename):
-	#print('display_image filename: ' + filename)
-	return redirect(url_for('static', filename='uploads/' + filename), code=301)
+
+@app.route('/delete_picture', methods=['GET', 'POST'])
+def delete_picture():
+	global pictures
+
+	json_data = request.get_json()
+	data_id = json_data["Id"]
+	print(data_id)
+
+	for pic in pictures:
+		if int(pic["Id"]) == int(data_id):
+			pictures.remove(pic)
+
+	return jsonify(deleted=1)
+
 
 if __name__ == "__main__":
 	app.run()
