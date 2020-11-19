@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script>
+			var pictures = {{pictures|tojson}}
+		</script>
+
+		<style>
+		.bigwriting{
+			font-weight: normal;
+			font-size: 35px;
+			margin-left: 40px;
+		}
+		.nicetext{
+			font-weight: 400;
+			font-size: 30px;
+		}
+		.big{
+			height:30px;
+		}
+		.card {
+			width: 13rem;
+		}
+		.top{
+			background-color: #F8F8F8;
+			height: 170px;
+			padding-top: 50px;
+			padding-bottom: 75px;
+		}
+		</style>
+	</head>
+
+	<body>
+		{% extends "layout.html" %}
+
+		{% block content %}
+		<div class="row top"> 
+			<span class="bigwriting"> Public Interest Technology </span> 
+		</div>
+
+		<br>
+		<div id="mission">
+			<div class="nicetext">
+				Community Guidelines
+			</div>
+			This group is for residents both from the past and present to share photos, videos, and memories of our town. This is a positive group for young and old. If you post anything negative about the town or the people who live here you will be deleted.
+		</div>
+
+		<div class="big row"></div>
+
+		<div id="firstresults">
+			<div class="row">
+				{% for movie in pictures %}
+					<div class="card">
+						<div class="card-body">
+						    <h5 class="card-title">{{movie.Title}}</h5>
+						    <img src={{movie.Poster}} class="card-img-top">
+						    <p class="card-text">
+						    	{{movie.Description}}
+							</p>
+						     <!--<a href="http://127.0.0.1:5000/view/{{movie.Id}}" class="btn btn-primary">Learn more!</a>-->
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endblock %}
+	</body>
+</html>
