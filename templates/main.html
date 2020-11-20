@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
 
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="{{ url_for('static', filename = 'delete.js') }}"></script>
 
-		<script>
-			var pictures = {{pictures|tojson}}
-		</script>
-
 		<style>
-		.bigwriting{
-			font-weight: normal;
-			font-size: 35px;
-			margin-left: 40px;
-		}
-		.nicetext{
-			font-weight: 400;
-			font-size: 30px;
-		}
-		.big{
-			height:30px;
-		}
-		.card {
-			width: 13rem;
-		}
-		.top{
-			background-color: #F8F8F8;
-			height: 170px;
-			padding-top: 50px;
-			padding-bottom: 75px;
-		}
+			.bigwriting{
+				font-weight: normal;
+				font-size: 35px;
+				margin-left: 40px;
+			}
+			.nicetext{
+				font-weight: 400;
+				font-size: 30px;
+			}
+			.big{
+				height:30px;
+			}
+			.card {
+				width: 20%;
+			}
+			.top{
+				background-color: #F8F8F8;
+				height: 170px;
+				width: 100%;
+				padding-top: 50px;
+				padding-bottom: 75px;
+				
+			}
+			.map-container{
+				height:300px;
+				width: 100%;
+				padding-bottom: 20px;
+			}
+
+			#mapid{
+				height:100%;
+				width: 100%;
+			}
 		</style>
+		
 	</head>
 
 	<body>
@@ -54,7 +70,10 @@
 			This group is for residents both from the past and present to share photos, videos, and memories of our town. This is a positive group for young and old. If you post anything negative about the town or the people who live here you will be deleted.
 		</div>
 
-		<div class="big row"></div>
+		<div class="map-container">
+			<div id="mapid"></div>
+			
+		</div>
 
 		<div id="firstresults">
 			<div class="row">
@@ -70,6 +89,30 @@
 					</div>
 				{% endfor %}
 			</div>
-		{% endblock %}
+		
+	
+		<script>
+			
+			var pictures = {{pictures|tojson}}
+			
+			var mymap = L.map('mapid').setView([41.90, -74.828], 12);
+
+			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+				maxZoom: 18,
+				id: 'mapbox/streets-v11',
+				tileSize: 512,
+				zoomOffset: -1,
+				accessToken: 'pk.eyJ1IjoiYWh1YW5nMjIyIiwiYSI6ImNraHB2czh1azEwcmEydms2OGM5NGozM2gifQ.fiUlLSj8HeEhFjIezx9W4Q'
+			}).addTo(mymap);
+
+			var marker_ArnoldHouse = L.marker([41.871, -74.876]).addTo(mymap).bindPopup("<b>Arnold House").openPopup();
+			var marker_MSFarm = L.marker([41.901, -74.827]).addTo(mymap).bindPopup("<b>Main Street Farm").openPopup();
+			//var marker_Beaverkill = L.marker([41.982, -74.837]).addTo(mymap).bindPopup("<b>Beaverkill Covered Bridge").openPopup();
+
+		</script>
+
+	{% endblock %}
 	</body>
+
 </html>

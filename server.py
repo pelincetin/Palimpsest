@@ -52,7 +52,6 @@ def main():
 def upload_form():
 	return render_template('upload.html')
 
-
 @app.route('/uploaded', methods=['GET', 'POST'])
 def upload_image():
 	global pictures
