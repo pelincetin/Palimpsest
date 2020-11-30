@@ -66,11 +66,15 @@ def allowed_file(filename):
 
 @app.route('/')
 def main():
-	return render_template('main.html', pictures=pictures)
+	return render_template('main.html')
 
 @app.route('/about')
 def about():
 	return render_template('about.html')
+
+@app.route('/featured')
+def featured():
+	return render_template('featured.html', pictures=pictures)
 
 @app.route('/upload')
 def upload_form():

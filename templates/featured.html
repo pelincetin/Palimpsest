@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="{{ url_for('static', filename = 'delete.js') }}"></script>
+
+		<style>
+		.card {
+			width: 20%;
+		}
+		</style>
+
+		</head>
+
+	<body>
+		{% extends "layout.html" %}
+		{% block content %}
+		<script>
+			var pictures = {{pictures|tojson}}
+		</script>
+
+		<div id="firstresults">
+			<div class="row">
+				{% for pic in pictures %}
+					<div class="card">
+						<div class="card-body">
+							<img class="card-img-top" src={{pic.Poster}} alt="Card Image">
+							<h6 class="card-text">{{pic.Caption}}</h6>
+								{{pic.Description}}
+								<br>
+
+							<h6 class="card-text">{{pic.Date}}, {{pic.Name}}, {{pic.Location}}</h6>
+						     <!--<a href="http://127.0.0.1:5000/view/{{pic.Id}}" class="btn btn-primary">Learn more!</a>-->
+						</div>
+						<!--<button type="button" id={{pic.Id}} class="btn btn-primary">Delete me</button>-->
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		{% endblock %}
+
+	</body>
+</html>

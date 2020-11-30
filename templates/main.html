@@ -14,31 +14,10 @@
 		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<script src="{{ url_for('static', filename = 'delete.js') }}"></script>
 
 		<style>
-			.bigwriting{
-				font-weight: normal;
-				font-size: 35px;
-				margin-left: 40px;
-			}
-			.nicetext{
-				font-weight: 400;
-				font-size: 30px;
-			}
-			.big{
-				height:30px;
-			}
 			.card {
 				width: 20%;
-			}
-			.top{
-				background-color: #F8F8F8;
-				height: 170px;
-				width: 100%;
-				padding-top: 50px;
-				padding-bottom: 75px;
-				
 			}
 			.map-container{
 				height:680px;
@@ -62,29 +41,8 @@
 		<div class="map-container">
 			<div id="mapid"></div>
 		</div>
-
-		<div id="firstresults">
-			<div class="row">
-				{% for movie in pictures %}
-					<div class="card">
-						<div class="card-body">
-							<img class="card-img-top" src={{movie.Poster}} alt="Card Image">
-							<h6 class="card-text">{{movie.Caption}}</h6>
-								{{movie.Description}}
-								<br>
-
-							<h6 class="card-text">{{movie.Date}}, {{movie.Name}}, {{movie.Location}}</h6>
-						     <!--<a href="http://127.0.0.1:5000/view/{{movie.Id}}" class="btn btn-primary">Learn more!</a>-->
-						</div>
-						<!--<button type="button" id={{movie.Id}} class="btn btn-primary">Delete me</button>-->
-					</div>
-				{% endfor %}
-			</div>
-		
 	
 		<script>
-			
-			var pictures = {{pictures|tojson}}
 			
 			var mymap = L.map('mapid').setView([41.90, -74.828], 12);
 

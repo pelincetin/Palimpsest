@@ -20,8 +20,8 @@
 		body{
 			background-color: #FAFAFA;
 		}
-		.one{
-
+		.text-center{
+			font-size:40px;
 		}
 		</style>
 	</head>
@@ -32,12 +32,13 @@
 
 		<form method="post" action="/uploaded" enctype="multipart/form-data">
 			<div class="row small">
-				<div class="col-6">
+				<div class="col-6 text-center">
 					<div class="file-upload-wrapper">
- 						<input type="file" name="file" id="input-file-now" class="file-upload-input" data-file-upload="file-upload"/>
+ 						<input type="file" name="file" id="input-file-now" class="file-upload-input" data-file-upload="file-upload" style="display:none;"/>
+ 						<label for="input-file-now" style="color:grey; font-weight: 150;">Click here to upload an image</label>
 					</div>
 				</div>
-				<div class="col-4 one">
+				<div class="col-4">
 					<input class="form-control form-rounded" type="text" name="name" placeholder="Name" required><br>
 					<input class="form-control form-rounded" type="text" name="caption" placeholder="Caption" required><br>
 					<input class="form-control form-rounded" type="text" name="location" placeholder="Location" required><br>
