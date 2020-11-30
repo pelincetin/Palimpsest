@@ -40,15 +40,6 @@ decorator==4.4.0
 defusedxml==0.6.0
 distlib==0.3.0
 distributed==2.4.0
-Django==2.2.13
-django-allauth==0.40.0
-django-bootstrap4==2.0.1
-django-cors-headers==3.2.0
-django-rest-auth==0.9.5
-django-rest-swagger==2.2.0
-django-sslserver==0.21
-django-storages==1.7.2
-djangorestframework==3.10.3
 docutils==0.15.2
 elasticsearch==7.9.1
 entrypoints==0.3
@@ -107,7 +98,6 @@ mailchimp3==3.0.14
 Markdown==3.2.1
 MarkupSafe==1.1.1
 matplotlib==3.1.1
-maven==0.1.0
 mccabe==0.6.1
 mistune==0.8.4
 mixpanel==4.5.0
