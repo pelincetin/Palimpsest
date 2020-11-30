@@ -9,14 +9,49 @@
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 		<style>
+
+			ul.b {
+			list-style-type: square;
+			}
+
 		</style>
 
-		</head>
+	</head>
 
 	<body>
 		{% extends "layout.html" %}
+		
 		{% block content %}
-		This page is yet to be designed.
+		
+
+		<h1> Community Building through Knowledge Sharing </h1>
+
+		<h2>
+			This PIT aims to help connect you with your local community.
+		</h2> 
+
+		<ul class="b">
+			<li>Map</li>
+			<p> All featured content is displayed on the map. 
+				Click on the pins to learn more about each location. </p>
+			<li>Featured</li>
+			<p> Uploaded content will appear in the Featured tab. 
+				Click on each card to learn more about what other community members uploaded.
+			</p>
+			<li>Upload</li>
+			<p>
+				You may also feel free to upload your own stories. 
+				Include helpful information such as name, caption, location, date, and a description. 
+				Once verified, your uploaded content will appear on the Featured tab. 
+				If you specified a location, it will be displayed on the Map tab.
+			</p>
+		</ul>
+
+		<h2>
+			Enjoy!
+		</h2> 
+		
+		<script>console.log("here")</script>
 		{% endblock %}
 
 	</body>
