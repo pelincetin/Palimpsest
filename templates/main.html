@@ -41,7 +41,7 @@
 				
 			}
 			.map-container{
-				height:300px;
+				height:680px;
 				width: 100%;
 				padding-bottom: 20px;
 			}
@@ -58,21 +58,9 @@
 		{% extends "layout.html" %}
 
 		{% block content %}
-		<div class="row top"> 
-			<span class="bigwriting"> Public Interest Technology </span> 
-		</div>
-
-		<br>
-		<div id="mission">
-			<div class="nicetext">
-				Community Guidelines
-			</div>
-			This group is for residents both from the past and present to share photos, videos, and memories of our town. This is a positive group for young and old. If you post anything negative about the town or the people who live here you will be deleted.
-		</div>
 
 		<div class="map-container">
 			<div id="mapid"></div>
-			
 		</div>
 
 		<div id="firstresults">
@@ -81,11 +69,14 @@
 					<div class="card">
 						<div class="card-body">
 							<img class="card-img-top" src={{movie.Poster}} alt="Card Image">
-							<h6 class="card-text">Location: {{movie.Location}}</h6>
+							<h6 class="card-text">{{movie.Caption}}</h6>
 								{{movie.Description}}
+								<br>
+
+							<h6 class="card-text">{{movie.Date}}, {{movie.Name}}, {{movie.Location}}</h6>
 						     <!--<a href="http://127.0.0.1:5000/view/{{movie.Id}}" class="btn btn-primary">Learn more!</a>-->
 						</div>
-						<button type="button" id={{movie.Id}} class="btn btn-primary">Delete me</button>
+						<!--<button type="button" id={{movie.Id}} class="btn btn-primary">Delete me</button>-->
 					</div>
 				{% endfor %}
 			</div>
