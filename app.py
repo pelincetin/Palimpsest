@@ -38,7 +38,7 @@ pictures = [{
 		"Name": "Stacy Tao",
 		"Caption": "Heavy Rainfall",
 		"Date": "2020-11-29",
-		"Poster": "http://www.livingstonmanor.net/LM-FloodOf2010/LM-Flood2010-Sunoco.jpg",
+		"Poster": "static/uploads/second.jpg",
 		"Description": "Heavy rainfall during the evening of September 30th and the early morning hours of October 1st, estimated by some to total six inches of rain, drenched Livingston Manor and its surroundings, quickly filling the previously water-starved local streams and creeks with floodwaters. Considering the experiences from the recent flooding events at the Manor, this episode would probably be considered minor; unless, of course you are one of the residents still remaining in the flood prone areas.",
 		"Location": "Livingston Manor"
 	},
@@ -47,7 +47,7 @@ pictures = [{
 		"Name": "Celeste Layne",
 		"Caption": "The Drastic Change",
 		"Date": "2020-11-29",
-		"Poster": "http://www.livingstonmanor.net/RussellHouse/LM-RussellHouse2009.JPG",
+		"Poster": "static/uploads/third.jpeg",
 		"Description": "Livingston Manor has long had a flare for the dramatic, the usual episodes being water related. Yesterday afternoon, however, added a new chapter in Manor misery; fire. In what sounded like the repeated percussion of cannons, the propane tanks alongside the Hoos building exploded, sending shock waves that broke windows and could be felt throughout the downtown section of the village as far away as Peck's Market.",
 		"Location": "Livingston Manor"
 	},
@@ -56,7 +56,7 @@ pictures = [{
 		"Name": "Stacy Tao",
 		"Caption": "Beaverkill Covered Bridge",
 		"Date": "2020-11-29",
-		"Poster": "http://livingstonmanor.net/FredPIX2/IMG_0789%20-%20Copy.JPG",
+		"Poster": "static/uploads/fourth.jpeg",
 		"Description": "While working on dismantling the approaches to the Beaverkill Covered Bridge during the winter of 2016-17, the bridge restoration work crew unearthed a cache of hides buried within the earthen ramp leading to the bridge’s eastern portal. These hides assumedly date back to the nineteenth century tannery of Wm. Ellswoth & Co. that was located at what is now the Beaverkill Campsite, next to the bridge.",
 		"Location": "Beaverkill Covered Bridge"
 	},
