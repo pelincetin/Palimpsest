@@ -1,6 +1,8 @@
 import os
 import urllib.request
-from flask import Flask, flash, request, redirect, url_for, render_template, jsonify
+from flask import Flask, flash, g, request, redirect, url_for, render_template, jsonify
+from flask_oidc import OpenIDConnect
+from okta import UsersClient
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
@@ -11,6 +13,15 @@ app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
+app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
+app.config["OIDC_COOKIE_SECURE"] = False
+app.config["OIDC_CALLBACK_ROUTE"] = "/oidc/callback"
+app.config["OIDC_SCOPES"] = ["openid", "email", "profile"]
+app.config["SECRET_KEY"] = "sdhjkjsklfhgwe6789238yhbdjasgd6dsahjdasdf5"
+app.config["OIDC_ID_TOKEN_COOKIE_NAME"] = "oidc_token"
+oidc = OpenIDConnect(app)
+okta_client = UsersClient("https://dev-9288180.okta.com", "004rl1v6L-2Pd0ewr5DcUz2B5o_Y9Mu_fgCH1bEax5")
+
 
 current_id = 6
 pictures = [{
@@ -18,7 +29,7 @@ pictures = [{
 		"Name": "Celeste Layne",
 		"Caption": "Damage of the Flood",
 		"Date": "2020-11-29",
-		"Poster": "http://www.livingstonmanor.net/HoosBuilding/TN_LMtoday-HoodBuilding.JPG",
+		"Poster": "static/uploads/first.jpeg",
 		"Description": "Over the course of the past number of years, flooding along the river and creeks that flow through Livingston Manor has inflicted serious property damage upon the many residences unfortunate enough to be in the path of the river valley's designated flood-plane. Still, the devastation caused over the course of the past few years by these floodwaters pales in comparison to the destruction amassed in just a few short hours by the work of large machines designed to destroy.",
 		"Location": "Livingston Manor"
 	},
@@ -63,10 +74,16 @@ pictures = [{
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.before_request
+def before_request():
+    if oidc.user_loggedin:
+        g.user = okta_client.get_user(oidc.user_getfield("sub"))
+    else:
+        g.user = None
 
 @app.route('/')
 def main():
-	return render_template('main.html')
+	return render_template('main.html', pictures=pictures)
 
 @app.route('/about')
 def about():
@@ -101,8 +118,6 @@ def upload_image():
 		description=request.form["description"]
 		location=request.form["location"]
 		date=request.form["date"]
-		print(request.form)
-		print(request.values)
 
 		new_picture_entry={
 			"Id": current_id,
@@ -135,6 +150,17 @@ def delete_picture():
 			pictures.remove(pic)
 
 	return jsonify(deleted=1)
+
+@app.route("/login")
+@oidc.require_login
+def login():
+    return redirect(url_for("upload_form"))
+
+
+@app.route("/logout")
+def logout():
+    oidc.logout()
+    return redirect(url_for("main"))
 
 
 if __name__ == "__main__":
