@@ -49,6 +49,11 @@
 			.topnav .search-container {
   				float: right;
 			}
+			.topnav .topcorner{
+			   position:absolute;
+			   top:0;
+			   right:0;
+			 }
 
 			.btn-primary {
 				background-color: black;
@@ -100,6 +105,15 @@
 
 		<div class="topnav">
 			<div class="push">ARCHIVE</div>
+			{% if not g.user %}
+			<div class="topcorner">
+				<a href="/login">login/register</a>
+			</div>
+			{% else %}
+			<div class="topcorner">
+				<a href="http://127.0.0.1:5000/logout">{{g.user.profile.firstName}} {{g.user.profile.lastName}} | logout</a>
+			</div>
+			{% endif %}
 			<a href="https://pit-newsroom.herokuapp.com/">map</a>
 			<a href="https://pit-newsroom.herokuapp.com/featured">featured</a>
 			<a href="https://pit-newsroom.herokuapp.com/about">about</a>
