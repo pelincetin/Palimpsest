@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="{{ url_for('static', filename = 'delete.js') }}"></script>
+
+		<style>
+		img{
+			-webkit-filter: grayscale(100%);
+			-moz-filter: grayscale(100%);
+			-ms-filter: grayscale(100%);
+			filter: grayscale(100%);
+			filter: gray;
+			width: 100%;
+			height: 100%;
+			background-size: contain;
+		}
+		img:hover {
+		   -webkit-filter: none;
+		   -moz-filter: none;
+		   -ms-filter: none;
+		   filter: none;
+		   background-size: contain;
+		}
+		.row{
+			padding-left: 50px;
+		}
+		.bigwriting{
+			color: grey;
+			font-size: 30px;
+			padding-left: 65px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		.padding-0{
+		    padding-right:0;
+		    padding-left:0;
+		    margin-right:0;
+		    margin-left:0;
+		}
+		.smallpadding{
+			height:10px;
+		}
+		</style>
+
+		</head>
+
+	<body>
+		{% extends "layout.html" %}
+		{% block content %}
+		<script>
+			var pictures = {{pictures|tojson}}
+		</script>
+
+		<div id="firstresults">
+			<div class="row bigwriting">
+				Your Uploads
+			</div>
+			{% for pic in pictures %}
+			<div class="card mb-3" style="max-width: 1100px;">
+				<div class="row no-gutters">
+				    <div class="col-md-5 padding-0">
+				      <img src={{pic.Poster}} class="card-img-top">
+				    </div>
+				    <div class="col-md-7">
+						<div class="card-header">
+							Uploaded on {{pic.Date}}
+						</div>
+						<div class="card-body">
+	    					<h5 class="card-title">{{pic.Caption}}</h5>
+							<p class="card-text">{{pic.Description}}</p><br>
+							{% if pic.Verified%}
+							<button style="border-radius:2em; width:40%;" type="button" class="btn btn-success" disabled>Verified {{pic.VerificationDate}}</button>
+							{% else %}
+							<button style="border-radius:2em; width:40%;" type="button" class="btn btn-outline-secondary" disabled>Not Yet Verified</button>
+							{% endif %}
+							<button style="border-radius:2em; width:40%;" type="button" id={{pic.Id}} class="btn btn-outline-danger">Delete</button>
+						     <!--<a href="http://127.0.0.1:5000/view/{{pic.Id}}" class="btn btn-primary">Learn more!</a>-->
+						</div>
+						<!--<button type="button" id={{pic.Id}} class="btn btn-primary">Delete me</button>-->
+					</div>
+				</div>
+			</div>
+			<div class="smallpadding"></div>
+			{% endfor %}
+		</div>
+
+		{% endblock %}
+
+	</body>
+</html>

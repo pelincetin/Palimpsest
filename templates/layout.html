@@ -49,6 +49,10 @@
 			.topnav .search-container {
   				float: right;
 			}
+			.topnav .search-container2 {
+  				float: right;
+  				float: bottom;
+			}
 			.topnav .topcorner{
 			   position:absolute;
 			   top:0;
@@ -112,6 +116,9 @@
 			{% else %}
 			<div class="topcorner">
 				<a href="/logout">{{g.user.profile.firstName}} {{g.user.profile.lastName}} | logout</a>
+			</div>
+			<div class="search-container2">
+				<a href="/my-uploads">my uploads</a>
 			</div>
 			{% endif %}
 			<a href="/">map</a>
