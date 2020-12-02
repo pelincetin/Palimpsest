@@ -146,7 +146,7 @@ def upload_image():
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		poster=filename
-		name=request.form["name"]
+		name=g.user.profile.firstName + " " + g.user.profile.lastName
 		caption=request.form["caption"]
 		description=request.form["description"]
 		address=request.form["address"]
