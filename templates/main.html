@@ -13,7 +13,11 @@
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+		<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+		<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 
 		<style>
 			.card {
@@ -38,26 +42,73 @@
 
 		{% block content %}
 
+		
+		<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+		<link
+		rel="stylesheet"
+		href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+		type="text/css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
 		<div class="map-container">
 			<div id="mapid"></div>
 		</div>
-	
+
+		<div class='geocoder'>
+			<div id='geocoder'></div>
+		</div>
+		
 		<script>
-			var pictures = {{pictures|tojson}}
+
+			//var pictures = {{pictures|tojson}}
+
+			//get URL string
+			var getUrlParameter = function getUrlParameter(sParam) {
+				var sPageURL = window.location.search.substring(1),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+					}
+				}
+			}
+
+			var location_Name = (getUrlParameter('location'));
 			
-			var mymap = L.map('mapid').setView([41.90, -74.828], 12);
+			mapboxgl.accessToken = 'pk.eyJ1IjoiYWh1YW5nMjIyIiwiYSI6ImNraHB2czh1azEwcmEydms2OGM5NGozM2gifQ.fiUlLSj8HeEhFjIezx9W4Q';
+			
+			var mymap = new mapboxgl.Map({
+				container: 'mapid',
+				style: 'mapbox://styles/mapbox/streets-v11',
+				center: [-79.4512, 43.6568],
+				zoom: 13
+			});
 
-			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-				maxZoom: 18,
-				id: 'mapbox/streets-v11',
-				tileSize: 512,
-				zoomOffset: -1,
-				accessToken: 'pk.eyJ1IjoiYWh1YW5nMjIyIiwiYSI6ImNraHB2czh1azEwcmEydms2OGM5NGozM2gifQ.fiUlLSj8HeEhFjIezx9W4Q'
-			}).addTo(mymap);
+			var geocoder = new MapboxGeocoder({ 
+				accessToken: mapboxgl.accessToken,
+				mapboxgl: mapboxgl,
+				
+			});
 
-			var marker_ArnoldHouse = L.marker([41.871, -74.876]).addTo(mymap).bindPopup("<b>Arnold House").openPopup();
-			var marker_MSFarm = L.marker([41.901, -74.827]).addTo(mymap).bindPopup("<b>Main Street Farm").openPopup();
+			mymap.addControl(geocoder)
+	
+			geocoder.query(location_Name, showMap);
+			
+			function showMap(err, data) {
+				if (data.lbounds) {
+					mymap.fitBounds(data.lbounds);
+				} else if (data.latlng) {
+					mymap.setView([data.latlng[0], data.latlng[1]], 5);
+				}
+			}
+
+			//var marker_ArnoldHouse = L.marker([41.871, -74.876]).addTo(mymap).bindPopup("<b>Arnold House").openPopup();
+			//var marker_MSFarm = L.marker([41.901, -74.827]).addTo(mymap).bindPopup("<b>Main Street Farm").openPopup();
 			//var marker_Beaverkill = L.marker([41.982, -74.837]).addTo(mymap).bindPopup("<b>Beaverkill Covered Bridge").openPopup();
 
 		</script>
