@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -118,15 +118,13 @@
 				<a href="/logout">{{g.user.profile.firstName}} {{g.user.profile.lastName}} | logout</a>
 			</div>
 			<div class="search-container2">
+				<a href="/upload">upload</a>
 				<a href="/my-uploads">my uploads</a>
 			</div>
 			{% endif %}
 			<a href="/">map</a>
 			<a href="/featured">featured</a>
 			<a href="/about">about</a>
-			<div class="search-container">
-				<a href="/upload">upload</a>
-			</div>
 		</div>
 			
 			{% block content %}

@@ -110,10 +110,12 @@ def featured():
 	return render_template('featured.html', pictures=featured_pics)
 
 @app.route('/upload')
+@oidc.require_login
 def upload_form():
 	return render_template('upload.html')
 
 @app.route('/my-uploads')
+@oidc.require_login
 def my_uploads():
 	my_photos=[]
 	name = g.user.profile.firstName + " " + g.user.profile.lastName
@@ -123,6 +125,7 @@ def my_uploads():
 	return render_template('my-uploads.html', pictures=my_photos)
 
 @app.route('/uploaded', methods=['GET', 'POST'])
+@oidc.require_login
 def upload_image():
 	global pictures
 	global current_id
@@ -151,7 +154,9 @@ def upload_image():
 			"Date": date,
 			"Poster": url_for('static', filename='uploads/' + filename),
 			"Description": description,
-			"Location": location
+			"Location": location,
+			"Verified": False,
+			"VerificationDate": None,
 		}
 		current_id += 1
 		pictures.append(new_picture_entry)
