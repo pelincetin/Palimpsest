@@ -9,9 +9,19 @@
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 		<style>
-
-			ul.b {
-			list-style-type: square;
+			.littlegrey{
+				color: grey;
+				font-size: 25px;
+			}
+			.big
+			{
+				color: grey;
+				font-size: 48px;
+				font-weight: 500;
+			}
+			.tinygrey{
+				color: grey;
+				font-size:20px;
 			}
 
 		</style>
@@ -23,33 +33,34 @@
 		
 		{% block content %}
 		
+		<div class="row">
 
-		<h1> Community Building through Knowledge Sharing </h1>
+			<div class='col-md-4'>
+			</div>
+			<div class='col-md-5'>
+				<div class="big"> ARCHIVE AT <tspan style="color:black;"> MANOR INK</tspan></div>
 
-		<h2>
-			This PIT aims to help connect you with your local community.
-		</h2> 
+				<div class="littlegrey">
+					Hosted by Livingston Manor Public Library & Manor Ink
+				</div> 
+				<div style="height:70px;"></div>
 
-		<ul class="b">
-			<li>Map</li>
-			<p> All featured content is displayed on the map. 
-				Click on the pins to learn more about each location. </p>
-			<li>Featured</li>
-			<p> Uploaded content will appear in the Featured tab. 
-				Click on each card to learn more about what other community members uploaded.
-			</p>
-			<li>Upload</li>
-			<p>
-				You may also feel free to upload your own stories. 
-				Include helpful information such as name, caption, location, date, and a description. 
-				Once verified, your uploaded content will appear on the Featured tab. 
-				If you specified a location, it will be displayed on the Map tab.
-			</p>
-		</ul>
+				<div class="tinygrey">
+					Bringing the Library inside out! 
+					QR ME! is a web based archive that connects the physical world around us to the digital world inside our computers or phones. 
+					Walk around town and keep an eye out for the QR codes posted around town and uncover some marvelous facts and images you did not know about your surroundings. 
+				</div>
+				<div style="height:70px;"></div>
+				<div class="tinygrey">
+					<tspan style="color:black; padding-right: 20px;">_MAP</tspan>All featured content is displayed on the map. Click on the pins to learn more about each location. <br> <br>
+					<tspan style="color:black; padding-right: 20px;">_FEATURED</tspan>Uploaded content will appear in the Featured tab. Click on each card to learn more about what other community members and neighbors have uploaded. <br> <br>
+					<tspan style="color:black; padding-right: 20px;">_UPLOAD</tspan>Everybody can upload their own stories, images or documents! Include helpful information such as name, caption, location, date, and a description. Once verified, the uploaded content will appear on the Featured tab. If location was specified, it will be displayed on the Map tab.
+				</div>
 
-		<h2>
-			Enjoy!
-		</h2> 
+
+			</div>
+		</div>
+
 		
 		<script>console.log("here")</script>
 		{% endblock %}
