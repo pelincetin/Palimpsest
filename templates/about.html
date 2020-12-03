@@ -23,6 +23,19 @@
 				color: grey;
 				font-size:15px;
 			}
+			img{
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				-ms-filter: grayscale(100%);
+				filter: grayscale(100%);
+				filter: gray;
+			}
+			img:hover {
+			   -webkit-filter: none;
+			   -moz-filter: none;
+			   -ms-filter: none;
+			   filter: none;
+			}
 
 		</style>
 
@@ -35,7 +48,11 @@
 		
 		<div class="row">
 
-			<div class='col-md-4'>
+			<div class='col-md-5'>
+				<img style="width:100%;" src="static/uploads/bir.jpg" alt="Card Image">
+				<div style="height:10px;"></div>
+				<img style="width:51%; padding-right: 5px;" src="static/uploads/iki.png" alt="Card Image">
+				<img style="width:47%;" src="static/uploads/dort.png" alt="Card Image">
 			</div>
 			<div class='col-md-5'>
 				<div class="big"> ARCHIVE AT <tspan style="color:black;"> MANOR INK</tspan></div>
@@ -58,6 +75,9 @@
 				</div>
 
 
+			</div>
+			<div class="col-md-2">
+				<img style="height:80%;" src="static/uploads/uc.png" alt="Card Image">
 			</div>
 		</div>
 
