@@ -62,8 +62,6 @@
 		
 		<script>
 
-			//var pictures = {{pictures|tojson}}
-
 			//get URL string
 			var getUrlParameter = function getUrlParameter(sParam) {
 				var sPageURL = window.location.search.substring(1),
@@ -96,6 +94,7 @@
 			});
 
 			mymap.addControl(geocoder)
+			mymap.addControl(new mapboxgl.NavigationControl());
 	
 			geocoder.query(location_Name, showMap);
 			
@@ -106,6 +105,62 @@
 					mymap.setView([data.latlng[0], data.latlng[1]], 5);
 				}
 			}
+
+			function getCoords(err, data) {
+				
+				console.log(err);
+				//results = data.results.features;	
+				console.log(results.data)	
+			}
+
+			var address = "Bridgeport,CT"
+			//console.log(geocoder.query(getCoords));
+
+			geocoder.on('select', function(object){
+				var coord = object.feature.geometry.coordinates;
+				console.log(([coord[1], coord[0]]));
+			});
+
+
+			var pictures = {{pictures|tojson}}
+			console.log(pictures)
+			
+
+			pictures.forEach(addPins);
+			
+			
+			function addPins(item, index) {
+				
+				var location_pin = (item.Address + "," + item.City);
+				console.log(location_pin)
+				//console.log(geocoder.query(location_pin).options);
+				geocoder.query(location_pin, getCoords(location_pin));
+
+/*
+				geocoder.on('results', function(results) {
+					var feature_location = (item.Address).substring(0,5)
+
+					console.log(feature_location)
+					console.log(results.features[0].place_name)
+
+					console.log((results.features[0].place_name).includes(location_pin))
+					//if ((results.features[0].place_name).includes(location_pin)) {
+					//	console.log(results.features[0].place_name);
+					//}
+					
+				})
+*/
+				
+				//var marker = new mapboxgl.Marker()
+			//		.setLngLat([12.550343, 55.665957])
+		//			.addTo(map);
+	//			L.marker([41.871, -74.876]).addTo(mymap).bindPopup("<b>Arnold House").openPopup();
+			
+				
+
+			}
+
+			
 
 			//var marker_ArnoldHouse = L.marker([41.871, -74.876]).addTo(mymap).bindPopup("<b>Arnold House").openPopup();
 			//var marker_MSFarm = L.marker([41.901, -74.827]).addTo(mymap).bindPopup("<b>Main Street Farm").openPopup();
