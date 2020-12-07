@@ -120,8 +120,13 @@
 			<div class="search-container2">
 				<a href="/upload">upload</a>
 				<a href="/my-uploads">my uploads</a>
+				{% if g.user.profile.firstName=="Admin" and g.user.profile.lastName=="User" %}
+				<a href="/verify">verify</a>
+				{% endif %}
 			</div>
 			{% endif %}
+
+
 			<a href="/">map</a>
 			<a href="/featured">featured</a>
 			<a href="/about">about</a>

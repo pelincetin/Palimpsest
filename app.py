@@ -114,6 +114,11 @@ def featured():
 
 	return render_template('featured.html', pictures=featured_pics)
 
+@app.route('/verify')
+@oidc.require_login
+def verify():
+	return render_template('verify.html', pictures=pictures)
+
 @app.route('/upload')
 @oidc.require_login
 def upload_form():
@@ -191,7 +196,9 @@ def delete_picture():
 @app.route("/login")
 @oidc.require_login
 def login():
-    return redirect(url_for("upload_form"))
+	print(g.user.profile)
+	#print(g.user.profile.role)
+	return redirect(url_for("upload_form"))
 
 
 @app.route("/logout")
