@@ -25,8 +25,81 @@
 			}
 			.map-container{
 				height:680px;
-				width: 100%;
+				width: 80%;
 				padding-bottom: 20px;
+				float: left
+			}
+
+			.info-container{
+				float:right;
+				height:680px;
+				width: 20%;
+				padding-bottom: 20px;
+				overflow:auto;
+			}
+
+			.title0 {
+				color: darkgrey;
+				font-size: 40px;
+				font-weight: 500;
+			}
+
+			.name0 {
+				color: darkgrey;
+				font-size: 10px;
+				font-weight: 500;
+			}
+
+			.title1 {
+				color: darkgrey;
+				font: Serif;
+				font-size: 40px;
+				font-weight: 500;
+			}
+
+			.name1 {
+				color: darkgrey;
+				font-size: 10px;
+				font-weight: 500;
+			}
+
+			.title2 {
+				color: darkgrey;
+				font: Serif;
+				font-size: 40px;
+				font-weight: 500;
+			}
+
+			.name2 {
+				color: darkgrey;
+				font-size: 10px;
+				font-weight: 500;
+			}
+
+			.title3 {
+				color: darkgrey;
+				font: Serif;
+				font-size: 40px;
+				font-weight: 500;
+			}
+
+			.name3 {
+				color: darkgrey;
+				font-size: 10px;
+				font-weight: 500;
+			}
+
+			.title4 {
+				color: darkgrey;
+				font-size: 40px;
+				font: Serif;
+				font-weight: 500;
+			}
+
+			.name4 {
+				color: darkgrey;
+				font-size: 10px;
+				font-weight: 500;
 			}
 
 			#mapid{
@@ -56,12 +129,99 @@
 			<div id="mapid"></div>
 		</div>
 
+		<div class="info-container">
+			<div id="infoid"></div>
+			<div id = "title0"></div>
+			<div id = "name0">	</div>
+			<div id = "image0"><img src="" style="width:200px;height:200;"></div>
+
+			<div id = "title1"></div>
+			<div id = "name1">	</div>
+			<div id = "image1"><img src="" style="width:200px;height:200;"></div>
+
+			<div id = "title2"></div>
+			<div id = "name2">	</div>
+			<div id = "image2"><img src=""style="width:200px;height:200;"></div>
+
+			<div id = "title3"></div>
+			<div id = "name3"> </div>
+			<div id = "image3"> <img src="" style="width:200px;height:200;"></div>
+
+			<div id = "title4"></div>
+			<div id = "name4">	</div>
+			<div id = "image4"><img src="" style="width:200px;height:200;"></div>
+
+
+		</div>
+
 		<div class='geocoder'>
 			<div id='geocoder'></div>
 		</div>
 		
 		<script>
 
+			var pictures = {{pictures|tojson}}
+			
+			console.log(pictures[0].Caption)
+			console.log(pictures[0].Name)
+			console.log(pictures[0].Poster)
+
+			
+			
+			getinfo();
+
+			function getinfo() {
+				document.getElementById("title0").innerHTML = pictures[0].Caption;
+				document.getElementById("name0").innerHTML = pictures[0].Name;
+				//document.getElementById("name0").innerHTML = '<font size="2">pictures[0].Name</font>';
+				var par3 = document.getElementById('image0');
+				var img = document.createElement('img');
+				img.src = "../" + pictures[0].Poster
+				img.width = "320"
+				img.height = "200"
+				par3.appendChild(img);
+				
+			
+				document.getElementById("title1").innerHTML = pictures[1].Caption;
+				document.getElementById("name1").innerHTML = pictures[1].Name;
+				var par3 = document.getElementById('image1');
+				var img = document.createElement('img');
+				img.src = "../" + pictures[1].Poster
+				img.width = "320"
+				img.height = "200"
+				par3.appendChild(img);
+				
+				document.getElementById("title2").innerHTML = pictures[2].Caption;
+				document.getElementById("name2").innerHTML = pictures[2].Name;
+				var par3 = document.getElementById('image2');
+				var img = document.createElement('img');
+				img.src = "../" + pictures[2].Poster
+				img.width = "320"
+				img.height = "200"
+				par3.appendChild(img);
+				
+	
+				document.getElementById("title3").innerHTML = pictures[3].Caption;
+				document.getElementById("name3").innerHTML = pictures[3].Name;
+				var par3 = document.getElementById('image3');
+				var img = document.createElement('img');
+				img.src = "../" + pictures[3].Poster
+				img.width = "320"
+				img.height = "200"
+				par3.appendChild(img);
+				
+			
+				document.getElementById("title4").innerHTML = pictures[4].Caption;
+				document.getElementById("name4").innerHTML = pictures[4].Name;
+				var par3 = document.getElementById('image4');
+				var img = document.createElement('img');
+				img.src = "https://images.squarespace-cdn.com/content/v1/534d8565e4b0c7f5e4fcb4f7/1562030061043-ICZGG34BMCXHR40HHXGX/ke17ZwdGBToddI8pDm48kFyD7pzB8zoMIVY5aiUuFlp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8DMb5PTLoEDdB05UqhYu-xbnSznFxIRsaAU-3g5IaylIg/foster-supply-hospitality-ARNOLD-2019-06-Conservatory-Food-Scott-Yoga-Exteriors-Lawrence-Braun-0001-LB2_2700.jpg"
+				img.width = "320"
+				img.height = "200"
+				par3.appendChild(img);
+			
+			}
+			
 			//get URL string
 			var getUrlParameter = function getUrlParameter(sParam) {
 				var sPageURL = window.location.search.substring(1),
@@ -80,22 +240,27 @@
 			
 			mapboxgl.accessToken = 'pk.eyJ1IjoiYWh1YW5nMjIyIiwiYSI6ImNraHB2czh1azEwcmEydms2OGM5NGozM2gifQ.fiUlLSj8HeEhFjIezx9W4Q';
 			
+			//add Map
 			var mymap = new mapboxgl.Map({
 				container: 'mapid',
 				style: 'mapbox://styles/mapbox/streets-v11',
-				center: [-79.4512, 43.6568],
-				zoom: 13
+				center: [-74.822720, 41.899620],
+				zoom: 10
 			});
 
+			//init geocoder
 			var geocoder = new MapboxGeocoder({ 
 				accessToken: mapboxgl.accessToken,
 				mapboxgl: mapboxgl,
 				
 			});
 
+			//add geocoder to map
 			mymap.addControl(geocoder)
+			//add zoom +/- to map
 			mymap.addControl(new mapboxgl.NavigationControl());
-	
+			
+			//querys location, pan to on map
 			geocoder.query(location_Name, showMap);
 			
 			function showMap(err, data) {
@@ -105,13 +270,72 @@
 					mymap.setView([data.latlng[0], data.latlng[1]], 5);
 				}
 			}
+			
 
+			var pictures = {{pictures|tojson}}
+			
+			console.log(pictures)
+
+			var rockAve = [-74.822720, 41.899620];
+			var mainStreet_50 = [-74.827530, 41.900990];
+			var mainStreet_29 = [-74.825580, 41.901420];
+			var raginRoad = [-74.837060, 41.981850];
+			var shandeleeRoad = [-74.8761585, 41.8712228];
+			// create the popup
+			var popup = new mapboxgl.Popup(
+				{ 
+				offset: 25 
+				}).setText('Rock Avenue, Livingston Manor.');
+			
+			// create the marker
+			var marker = new mapboxgl.Marker()
+				.setLngLat(rockAve)
+				.setPopup(popup) 
+				.addTo(mymap);
+
+			var popup = new mapboxgl.Popup(
+				{ 
+				offset: 25 
+				}).setText('50 Main Street, Livingston Manor.');
+			var marker = new mapboxgl.Marker()
+				.setLngLat(mainStreet_50)
+				.setPopup(popup) 
+				.addTo(mymap);
+
+			var popup = new mapboxgl.Popup(
+				{ 
+				offset: 25 
+				}).setText('29 Main Street, Livingston Manor.');
+			var marker = new mapboxgl.Marker()
+				.setLngLat(mainStreet_29)
+				.setPopup(popup) 
+				.addTo(mymap);
+
+			var popup = new mapboxgl.Popup(
+				{ 
+				offset: 25 
+				}).setText('3 Ragin Road, Livingston Manor.');
+			var marker = new mapboxgl.Marker()
+				.setLngLat(raginRoad)
+				.setPopup(popup) 
+				.addTo(mymap);
+
+			var popup = new mapboxgl.Popup(
+				{ 
+				offset: 25 
+				}).setText('839 Shandelee Road, Livingston Manor.');
+			var marker = new mapboxgl.Marker()
+				.setLngLat(shandeleeRoad)
+				.setPopup(popup) 
+				.addTo(mymap);
+			/*
 			function getCoords(err, data) {
 				
 				console.log(err);
 				//results = data.results.features;	
 				console.log(results.data)	
 			}
+			
 
 			var address = "Bridgeport,CT"
 			//console.log(geocoder.query(getCoords));
@@ -122,8 +346,6 @@
 			});
 
 
-			var pictures = {{pictures|tojson}}
-			console.log(pictures)
 			
 
 			pictures.forEach(addPins);
@@ -134,22 +356,25 @@
 				var location_pin = (item.Address + "," + item.City);
 				console.log(location_pin)
 				//console.log(geocoder.query(location_pin).options);
-				geocoder.query(location_pin, getCoords(location_pin));
+				//geocoder.query(location_pin, getCoords(location_pin));
 
-/*
+				//console.log(geocoder.query(location_pin))
+
+				console.log("hello")
+
 				geocoder.on('results', function(results) {
 					var feature_location = (item.Address).substring(0,5)
 
 					console.log(feature_location)
 					console.log(results.features[0].place_name)
 
-					console.log((results.features[0].place_name).includes(location_pin))
+					//console.log((results.features[0].place_name).includes(location_pin))
 					//if ((results.features[0].place_name).includes(location_pin)) {
 					//	console.log(results.features[0].place_name);
 					//}
 					
 				})
-*/
+
 				
 				//var marker = new mapboxgl.Marker()
 			//		.setLngLat([12.550343, 55.665957])
@@ -165,7 +390,7 @@
 			//var marker_ArnoldHouse = L.marker([41.871, -74.876]).addTo(mymap).bindPopup("<b>Arnold House").openPopup();
 			//var marker_MSFarm = L.marker([41.901, -74.827]).addTo(mymap).bindPopup("<b>Main Street Farm").openPopup();
 			//var marker_Beaverkill = L.marker([41.982, -74.837]).addTo(mymap).bindPopup("<b>Beaverkill Covered Bridge").openPopup();
-
+*/
 		</script>
 
 	{% endblock %}
