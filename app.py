@@ -99,8 +99,8 @@ pictures = [{
 		"Description": "dis my cat",
 		"Address": "NYC",
 		"City": "New York",
-		"Verified": "Not Yet",
-		"Message": "",
+		"Verified": "Rejected",
+		"Message": "This is not historical.",
 		"VerificationDate": "2020-11-24"
 	},
 
