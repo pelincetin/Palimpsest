@@ -33,7 +33,8 @@ pictures = [{
 		"Description": "Over the course of the past number of years, flooding along the river and creeks that flow through Livingston Manor has inflicted serious property damage upon the many residences unfortunate enough to be in the path of the river valley's designated flood-plane. Still, the devastation caused over the course of the past few years by these floodwaters pales in comparison to the destruction amassed in just a few short hours by the work of large machines designed to destroy.",
 		"Address": "Rock Ave",
 		"City": "Livingston Manor",
-		"Verified": True,
+		"Verified": "Verified",
+		"Message": "",
 		"VerificationDate": "2020-11-30",
 
 	},
@@ -46,7 +47,8 @@ pictures = [{
 		"Description": "Heavy rainfall during the evening of September 30th and the early morning hours of October 1st, estimated by some to total six inches of rain, drenched Livingston Manor and its surroundings, quickly filling the previously water-starved local streams and creeks with floodwaters. Considering the experiences from the recent flooding events at the Manor, this episode would probably be considered minor; unless, of course you are one of the residents still remaining in the flood prone areas.",
 		"Address": "50 Main St",
 		"City": "Livingston Manor",
-		"Verified": True,
+		"Verified": "Verified",
+		"Message": "",
 		"VerificationDate": "2020-11-14",
 	},
 	{
@@ -58,7 +60,8 @@ pictures = [{
 		"Description": "Livingston Manor has long had a flare for the dramatic, the usual episodes being water related. Yesterday afternoon, however, added a new chapter in Manor misery; fire. In what sounded like the repeated percussion of cannons, the propane tanks alongside the Hoos building exploded, sending shock waves that broke windows and could be felt throughout the downtown section of the village as far away as Peck's Market.",
 		"Address": "29 Main St",
 		"City": "Livingston Manor",
-		"Verified": True,
+		"Verified": "Verified",
+		"Message": "",
 		"VerificationDate": "2020-11-14"
 	},
 	{
@@ -70,7 +73,8 @@ pictures = [{
 		"Description": "While working on dismantling the approaches to the Beaverkill Covered Bridge during the winter of 2016-17, the bridge restoration work crew unearthed a cache of hides buried within the earthen ramp leading to the bridge’s eastern portal. These hides assumedly date back to the nineteenth century tannery of Wm. Ellswoth & Co. that was located at what is now the Beaverkill Campsite, next to the bridge.",
 		"Address": "3 Ragin Rd",
 		"City": "Roscoe",
-		"Verified": True,
+		"Verified": "Verified",
+		"Message": "",
 		"VerificationDate": "2020-11-20"
 	},
 	{
@@ -82,9 +86,24 @@ pictures = [{
 		"Description": "The Arnold House is a lively Catskills getaway located on Shandelee Mountain, near the quaint town of Livingston Manor. With our Tavern, newly renovated Barn & Greenhouse, expansive grounds & hiking trails and access to the area's storied outdoor activities our mission is to treat our guests to the comfort and relaxation of casual country living.",
 		"Address": "839 Shandelee Rd",
 		"City": "Livingston Manor",
-		"Verified": False,
+		"Verified": "Not Yet",
+		"Message": "",
 		"VerificationDate": "2020-11-24"
 	},
+	{
+		"Id": 6,
+		"Name": "Pelin Cetin",
+		"Caption": "my cat",
+		"Date": "2020-11-04",
+		"Poster": "https://i.pinimg.com/736x/64/60/b8/6460b864d8cbecc1c58522e62ee37a38.jpg",
+		"Description": "dis my cat",
+		"Address": "NYC",
+		"City": "New York",
+		"Verified": "Rejected",
+		"Message": "This is not historical.",
+		"VerificationDate": "2020-11-24"
+	},
+
 ]
 
 def allowed_file(filename):
@@ -109,7 +128,7 @@ def about():
 def featured():
 	featured_pics = []
 	for pic in pictures:
-		if pic["Verified"]:
+		if pic["Verified"] == "Verified":
 			featured_pics.append(pic)
 
 	return render_template('featured.html', pictures=featured_pics)
@@ -117,7 +136,13 @@ def featured():
 @app.route('/verify')
 @oidc.require_login
 def verify():
-	return render_template('verify.html', pictures=pictures)
+	verified_pics = []
+	global pictures
+	for pic in pictures:
+		if pic["Verified"] == "Not Yet":
+			verified_pics.append(pic)
+
+	return render_template('verify.html', pictures=verified_pics)
 
 @app.route('/upload')
 @oidc.require_login
@@ -167,7 +192,8 @@ def upload_image():
 			"Description": description,
 			"Address": address,
 			"City": city,
-			"Verified": False,
+			"Verified": "Not Yet",
+			"Message": "",
 			"VerificationDate": None,
 		}
 		current_id += 1
@@ -192,6 +218,24 @@ def delete_picture():
 			pictures.remove(pic)
 
 	return jsonify(deleted=1)
+
+@app.route('/verified', methods=['GET', 'POST'])
+def verified():
+	global pictures
+
+	json_data = request.get_json()
+	print(json_data)
+	data_id = json_data["Id"]
+	data_status = json_data["Status"]
+	data_message = json_data["Message"]
+	for pic in pictures:
+		if int(pic["Id"]) == int(data_id):
+			if data_status == "a":
+				pic["Verified"] = "Verified"
+			else:
+				pic["Verified"] = "Rejected"
+			pic["Message"] = data_message
+	return jsonify(verified=1)
 
 @app.route("/login")
 @oidc.require_login

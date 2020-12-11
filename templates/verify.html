@@ -6,7 +6,7 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-		<script src="{{ url_for('static', filename = 'delete.js') }}"></script>
+		<script src="{{ url_for('static', filename = 'verify.js') }}"></script>
 
 		<style>
 		img{
@@ -61,7 +61,6 @@
 				Verifying Uploads
 			</div>
 			{% for pic in pictures %}
-			{% if not pic.Verified%}
 			<div class="card mb-3" style="max-width: 1100px;">
 				<div class="row no-gutters">
 				    <div class="col-md-5 padding-0">
@@ -74,15 +73,18 @@
 						<div class="card-body">
 	    					<h5 class="card-title">{{pic.Caption}}</h5>
 							<p class="card-text">{{pic.Description}}</p><br>
-							<button style="border-radius:2em; width:40%;" type="button" class="btn btn-outline-success">Approve</button>
-							<button style="border-radius:2em; width:40%;" type="button" id={{pic.Id}} class="btn btn-outline-danger">Reject</button>
+							<button style="border-radius:2em; width:40%;" type="button" id={{pic.Id}}a class="btn btn-outline-success">Approve</button>
+							<button style="border-radius:2em; width:40%;" type="button" id={{pic.Id}}r class="btn btn-outline-danger">Reject</button>
+							<div style="height:10px"></div>
+							<div id="message">
+								<input class='form-control' type='text' id='mes' placeholder='If rejected, please write the reason.'>
+							</div>
 						     <!--<a href="http://127.0.0.1:5000/view/{{pic.Id}}" class="btn btn-primary">Learn more!</a>-->
 						</div>
 						<!--<button type="button" id={{pic.Id}} class="btn btn-primary">Delete me</button>-->
 					</div>
 				</div>
 			</div>
-			{% endif %}
 			<div class="smallpadding"></div>
 			{% endfor %}
 		</div>

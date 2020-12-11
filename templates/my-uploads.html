@@ -73,13 +73,17 @@
 						<div class="card-body">
 	    					<h5 class="card-title">{{pic.Caption}}</h5>
 							<p class="card-text">{{pic.Description}}</p><br>
-							{% if pic.Verified%}
+							{% if pic.Verified == "Verified" %}
 							<button style="border-radius:2em; width:40%;" type="button" class="btn btn-success" disabled>Verified {{pic.VerificationDate}}</button>
-							{% else %}
+							{% elif pic.Verified == "Not Yet" %}
 							<button style="border-radius:2em; width:40%;" type="button" class="btn btn-outline-secondary" disabled>Not Yet Verified</button>
+							{% else %}
+							<button style="border-radius:2em; width:40%;" type="button" class="btn btn-outline-danger" disabled>Rejected</button>
 							{% endif %}
 							<button style="border-radius:2em; width:40%;" type="button" id={{pic.Id}} class="btn btn-outline-danger">Delete</button>
 						     <!--<a href="http://127.0.0.1:5000/view/{{pic.Id}}" class="btn btn-primary">Learn more!</a>-->
+						     <div style="height:20px"></div>
+						    {{pic.Message}}
 						</div>
 						<!--<button type="button" id={{pic.Id}} class="btn btn-primary">Delete me</button>-->
 					</div>
