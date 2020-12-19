@@ -2,6 +2,8 @@
 
 Fall 2020 Advanced Web Studio Design
 
+Team members: Pelin Cetin, Amy Huang, Aya Abdallah, Will Cao
+
 
 ## Background on News Deserts:
 
