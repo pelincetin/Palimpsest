@@ -24,3 +24,6 @@ The origin of the word Palimpsest is used for something reused or altered but st
 
 Our solution, "Palimpsest", introduces a prototype that encourages communities to share their moments and their local history. The act of sharing memories allows for connections to be drawn between community members and creates a sense of belonging and unity within the neighborhood.
 
+## Technologies
+
+We have used Flask, JQuery, Javascript, HTML, CSS for this project. We've also used the service Okta for login/logout/signup. The app is hosted on Heroku. 
