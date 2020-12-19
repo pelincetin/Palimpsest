@@ -16,7 +16,7 @@ local news they get mostly covers an area other than where they live.
 
 ## Library x Newsroom Collabs
 
-From our interviews with KCQ, NowCastSA, and Local Lives, we realize that both libraries and new organizations play an important role in providing information to a community. Newsroom often write the first draft of a community's history, while libraries preserve its access.
+From our interviews with KCQ, Manor Ink, NowCastSA, and Local Lives, we realize that both libraries and new organizations play an important role in providing information to a community. Newsroom often write the first draft of a community's history, while libraries preserve its access.
 
 ## Our Solution
 
