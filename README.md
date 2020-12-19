@@ -30,4 +30,6 @@ We have used Flask, JQuery, Javascript, HTML, CSS for this project. We've also u
 
 ## Some screenshots of the project:
 
-![alt text](https://github.com/pelincetin/pit-newsroom/blob/master/screenshot/Screen Shot 2020-12-19 at 12.20.31 PM.png?raw=true)
+<p align="center">
+  <img src="screenshot/Screen Shot 2020-12-19 at 12.20.31 PM.png" width="350">
+</p>
