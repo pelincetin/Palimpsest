@@ -27,3 +27,8 @@ Our solution, "Palimpsest", introduces a prototype that encourages communities t
 ## Technologies
 
 We have used Flask, JQuery, Javascript, HTML, CSS for this project. We've also used the service Okta for login/logout/signup. The app is hosted on Heroku. 
+
+
+## Screenshots of the website
+
+<img src="https://github.com/pelincetin/pit-newsroom/blob/main/screenshots/1.png" alt="Your image title" width="400"/>
