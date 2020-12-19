@@ -32,3 +32,5 @@ We have used Flask, JQuery, Javascript, HTML, CSS for this project. We've also u
 ## Screenshots of the website
 
 <img src="https://github.com/pelincetin/pit-newsroom/blob/main/screenshots/1.png" alt="Your image title" width="400"/>
+<img src="https://github.com/pelincetin/pit-newsroom/blob/main/screenshots/2.png" alt="Your image title" width="400"/>
+<img src="https://github.com/pelincetin/pit-newsroom/blob/main/screenshots/3.png" alt="Your image title" width="400"/>
