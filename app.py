@@ -17,10 +17,10 @@ app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
 app.config["OIDC_COOKIE_SECURE"] = False
 app.config["OIDC_CALLBACK_ROUTE"] = "/oidc/callback"
 app.config["OIDC_SCOPES"] = ["openid", "email", "profile"]
-app.config["SECRET_KEY"] = "sdhjkjsklfhgwe6789238yhbdjasgd6dsahjdasdf5"
+app.config["SECRET_KEY"] = ""
 app.config["OIDC_ID_TOKEN_COOKIE_NAME"] = "oidc_token"
 oidc = OpenIDConnect(app)
-okta_client = UsersClient("https://dev-9288180.okta.com", "004rl1v6L-2Pd0ewr5DcUz2B5o_Y9Mu_fgCH1bEax5")
+okta_client = UsersClient("", "")
 
 
 current_id = 6
