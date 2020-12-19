@@ -1,9 +1,9 @@
-## Public Interest Technology: Newsroom x Library Collaborations
+# Public Interest Technology: Newsroom x Library Collaborations
 
 Fall 2020 Advanced Web Studio Design
 
 
-# Background on News Deserts:
+## Background on News Deserts:
 
 News deserts are communities with limited access to credible and comprehensive news -- are especially prevalent
 in rural America. More than 500 of the 1,800 newspapers that have closed or merged since 2004 were in rural
