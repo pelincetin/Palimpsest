@@ -12,11 +12,11 @@ communities.
 In a report released earlier this year, the Pew Research Center found that about half of U.S. adults (47%) say the
 local news they get mostly covers an area other than where they live.
 
-# Library x Newsroom Collabs
+## Library x Newsroom Collabs
 
 From our interviews with KCQ, NowCastSA, and Local Lives, we realize that both libraries and new organizations play an important role in providing information to a community. Newsroom often write the first draft of a community's history, while libraries preserve its access.
 
-# Our Solution
+## Our Solution
 
 The origin of the word Palimpsest is used for something reused or altered but still bearing visible traces of its earlier form. It can be used for material documents as well as larger scale urban lanscapes. Our project acts as a bridge between the physical and the the digital, lost historical data and community members by allowing them to share archival pictures on our platform.
 
